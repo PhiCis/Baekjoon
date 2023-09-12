@@ -1,0 +1,59 @@
+#include<stdio.h>
+long long t, n, a[2][2], tmp[2][2], ans[2][2], i, j, k, pnt;
+int main()
+{
+	scanf("%lld", &t);
+	while(t--)
+	{
+		a[0][0]=6;a[0][1]=996;a[1][0]=1;a[1][1]=0;
+		ans[0][0]=1;ans[0][1]=0;ans[1][0]=0;ans[1][1]=1;
+		scanf("%lld", &n);
+		n--;
+		while(n)
+		{
+			if(n&1)
+			{
+				for(i=0;i<2;i++)
+				{
+					for(j=0;j<2;j++)
+					{
+						tmp[i][j]=0;
+						for(k=0;k<2;k++)
+						{
+							tmp[i][j]+=a[i][k]*ans[k][j];
+							tmp[i][j]%=1000;
+						}
+					}
+				}
+				for(i=0;i<2;i++)
+				{
+					for(j=0;j<2;j++)
+					{
+						ans[i][j]=tmp[i][j];
+					}
+				}
+			}
+			for(i=0;i<2;i++)
+			{
+				for(j=0;j<2;j++)
+				{
+					tmp[i][j]=0;
+					for(k=0;k<2;k++)
+					{
+						tmp[i][j]+=a[i][k]*a[k][j];
+						tmp[i][j]%=1000;
+					}
+				}
+			}
+			for(i=0;i<2;i++)
+			{
+				for(j=0;j<2;j++)
+				{
+					a[i][j]=tmp[i][j];
+				}
+			}
+			n>>=1;
+		}
+		printf("Case #%lld: %03lld\n", ++pnt, ((6*ans[0][0]+2*ans[0][1])+999)%1000);
+	}
+}
