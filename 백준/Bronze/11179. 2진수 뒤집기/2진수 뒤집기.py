@@ -1,0 +1,1 @@
+print(int(format(int(input()), "b")[::-1], 2))
