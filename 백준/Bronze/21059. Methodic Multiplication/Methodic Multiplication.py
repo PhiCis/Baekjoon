@@ -1,0 +1,1 @@
+print((lambda x: "S("*x+"0"+")"*x)(input().count('S')*input().count('S')))
