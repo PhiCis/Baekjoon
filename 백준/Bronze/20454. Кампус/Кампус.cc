@@ -11,6 +11,6 @@ int main()
 		cin>>a;
 		a--;
 		a%=tmp;
-		cout<<a/tmp2*k+a%tmp2/y+1<<"\n";
+		cout<<a/tmp2*k+min(a%tmp2/y, k-1)+1<<"\n";
 	}
 }
